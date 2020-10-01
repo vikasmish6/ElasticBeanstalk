@@ -5,3 +5,7 @@ output "beanstalk_env_url" {
 output "elastic_load_balancers" {
   value = aws_elastic_beanstalk_environment.env.load_balancers
 }
+
+output "beanstalk_security_group_id" {
+  value = aws_security_group.elastic_beanstalk_app_sg.id
+}
