@@ -1,9 +1,9 @@
 output "beanstalk_env_url" {
-  value = aws_elastic_beanstalk_environment.env.cname
+  value = aws_elastic_beanstalk_environment.environment.cname
 }
 
 output "elastic_load_balancers" {
-  value = aws_elastic_beanstalk_environment.env.load_balancers
+  value = aws_elastic_beanstalk_environment.environment.load_balancers
 }
 
 output "beanstalk_security_group_id" {

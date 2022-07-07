@@ -8,9 +8,9 @@ variable "description" {
   description = ""
 }
 
-variable "env" {
+variable "environment" {
   type        = string
-  description = ""
+  description = "Environment Name like Prod, Testing"
 }
 
 variable "vpc_id" {

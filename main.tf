@@ -131,12 +131,12 @@ locals {
 
 resource "aws_security_group" "elastic_beanstalk_app_sg" {
   vpc_id = var.vpc_id
-  name   = "${var.service_name}-${var.env}-elastic-beanstalk-app-sg"
+  name   = "${var.service_name}-${var.environment}-elastic-beanstalk-app-sg"
   tags   = var.tags
 }
 
-resource "aws_elastic_beanstalk_environment" "env" {
-  name                   = "${var.service_name}-${var.env}-env"
+resource "aws_elastic_beanstalk_environment" "environment" {
+  name                   = "${var.service_name}-${var.environment}-environment"
   description            = var.description
   application            = var.eb_app_name
   solution_stack_name    = var.solution_stack_name

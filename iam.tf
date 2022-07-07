@@ -10,12 +10,12 @@ data "aws_iam_policy_document" "ec2_role" {
 }
 
 resource "aws_iam_role" "ec2_role" {
-  name               = "${var.service_name}-${var.env}-ec2-role"
+  name               = "${var.service_name}-${var.environment}-ec2-role"
   assume_role_policy = data.aws_iam_policy_document.ec2_role.json
 }
 
 resource "aws_iam_instance_profile" "ec2_iam_instance_profile" {
-  name = "${var.service_name}-${var.env}-iam-instance-profile"
+  name = "${var.service_name}-${var.environment}-iam-instance-profile"
   role = aws_iam_role.ec2_role.name
 }
 
@@ -46,7 +46,7 @@ data "aws_iam_policy_document" "service_role" {
 }
 
 resource "aws_iam_role" "service_role" {
-  name               = "${var.service_name}-${var.env}-service-role"
+  name               = "${var.service_name}-${var.environment}-service-role"
   assume_role_policy = data.aws_iam_policy_document.service_role.json
 }
 

@@ -23,7 +23,7 @@ No modules.
 
 | Name | Type |
 |------|------|
-| [aws_elastic_beanstalk_environment.env](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/elastic_beanstalk_environment) | resource |
+| [aws_elastic_beanstalk_environment.environment](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/elastic_beanstalk_environment) | resource |
 | [aws_iam_instance_profile.ec2_iam_instance_profile](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_instance_profile) | resource |
 | [aws_iam_role.ec2_role](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role) | resource |
 | [aws_iam_role.service_role](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role) | resource |
@@ -64,7 +64,7 @@ No modules.
 | <a name="input_enable_health_logs_streaming"></a> [enable\_health\_logs\_streaming](#input\_enable\_health\_logs\_streaming) | n/a | `string` | `true` | no |
 | <a name="input_enable_logs_streaming"></a> [enable\_logs\_streaming](#input\_enable\_logs\_streaming) | n/a | `bool` | `true` | no |
 | <a name="input_enable_ssl"></a> [enable\_ssl](#input\_enable\_ssl) | n/a | `bool` | `false` | no |
-| <a name="input_env"></a> [env](#input\_env) | n/a | `string` | n/a | yes |
+| <a name="input_env"></a> [environment](#input\_env) | n/a | `string` | n/a | yes |
 | <a name="input_environment_type"></a> [environment\_type](#input\_environment\_type) | n/a | `string` | `"LoadBalanced"` | no |
 | <a name="input_environment_variables"></a> [environment\_variables](#input\_environment\_variables) | n/a | `map(string)` | `{}` | no |
 | <a name="input_evaluation_periods"></a> [evaluation\_periods](#input\_evaluation\_periods) | n/a | `string` | `"1"` | no |
