@@ -1,3 +1,14 @@
+variable "aws_profile" {
+  type        = string
+  description = "The AWS Profile"
+}
+
+variable "aws_region" {
+  type        = string
+  description = "AWS Region for develop infra"
+}
+
+
 variable "service_name" {
   type        = string
   description = ""
