@@ -1,18 +1,5 @@
 provider "aws" {
   region  = var.region
-  profile = var.aws_profile
-}
-
-module "vpc" {
-  source             = "scalereal/vpc/aws"
-  version            = "0.0.1"
-  availability_zones = var.vpc_availability_zones
-  cidr_block         = var.vpc_cidr_block
-  database_subnets   = var.vpc_database_subnets
-  env                = var.env
-  private_subnets    = var.vpc_private_subnets
-  public_subnets     = var.vpc_public_subnets
-  service_name       = var.service_name
 }
 
 data "aws_iam_policy_document" "this" {
@@ -31,13 +18,12 @@ resource "aws_iam_role" "this" {
   assume_role_policy = data.aws_iam_policy_document.this.json
 }
 
-module "elastic_beanstalk_application" {
-  source                      = "scalereal/elastic-beanstalk-application/aws"
-  version                     = "0.0.1"
-  name                        = "Ruby App"
-  appversion_service_role_arn = aws_iam_role.this.arn
-  appversion_max_age_in_days  = 90
+ 
+resource "aws_elastic_beanstalk_application" "testapp" {
+  name        = "tf-test-name"
+  description = "tf-test-desc"
 }
+
 
 //Error 1
 #Error: InvalidParameterValue: Health transition option settings require enhanced SystemType.
@@ -57,15 +43,15 @@ module "elastic_beanstalk_application" {
 
 module "elastic_beanstalk_environment" {
   source                          = "../../"
-  eb_app_name                     = module.elastic_beanstalk_application.name
+  eb_app_name                     = "tf-test-name"
   env                             = var.env
   service_name                    = var.service_name
-  description                     = "My Ruby test Env"
+  description                     = "My Dotnet test Env"
   solution_stack_name             = var.eb_solution_stack_name
-  vpc_id                          = module.vpc.id
+  vpc_id                          = "vpc-214f0a48"
   enable_enhanced_healthreporting = true
-  private_subnets                 = module.vpc.private_subnets_ids
-  public_subnets                  = module.vpc.public_subnet_ids
+  private_subnets                 = ["subnet-eb4e0882","subnet-63b60e2e"]
+  public_subnets                  = ["subnet-eb4e0882","subnet-63b60e2e"]
   asg_max_count                   = "2"
   asg_min_count                   = "1"
 }
